@@ -1,10 +1,72 @@
-<p>
+<div>
+
+
+  <!-- <div id="testidtestid">
+    sdfsdf
+  </div> -->
+
+
+  <div [ngClass]="{toched:c.active}">
+    <label>Export as</label>
+    <input appLable #c="lable" type="number">
+  </div>
+
+  <div (click)="c.changeRandomColor()">
+    click label
+  </div>
+
+  <div (click)="changeColor(c)">
+      click label 2
+    </div>
+
   list works!
 
+  <div *ngIf="isLoading ; else elseBlock">
+    Loading
+  </div>
 
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-</p>
+  <ng-template #elseBlock>
+    Else loading...
+  </ng-template>
+
+
+
+  * <div *ngIf="isLoading; then thenBlock else elseBlock"></div>
+  * <ng-template #thenBlock>Content to render when condition is true.</ng-template>
+  * <ng-template #elseBlock>Content to render when condition is false.</ng-template>
+
+
+
+  <div hidden>
+    Loading... hidden
+  </div>
+
+
+
+  <div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'grid'">
+      Grid
+    </div>
+    <div *ngSwitchCase="list">
+      list
+    </div>
+    <div *ngSwitchDefault>
+      LOL
+    </div>
+  </div>
+
+
+
+  <input type="text" (input)="search($event)">
+
+
+
+  <div *ngFor="let place of places | async | filter: term: term: term; index as i; even as myEven; last as myLast; odd as myOdd ">
+    {{ i }}
+    Even {{ myEven }}
+    last {{ myLast }}
+
+    <app-card #refmy [place]="place" [even]="myEven"></app-card>
+    <button *appAcl="['DELETE', 'my-city']">Remove</button>
+  </div>
+</div>
